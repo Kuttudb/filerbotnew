@@ -719,6 +719,18 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
     return cap
 
 
+def get_wish():
+    tz = pytz.timezone('Asia/Colombo')
+    time = datetime.now(tz)
+    now = time.strftime("%H")
+    if now < "12":
+        status = "𝖦𝗈𝗈𝖽 𝖬𝗈𝗋𝗇𝗂𝗇𝗀 🌞"
+    elif now < "18":
+        status = "𝖦𝗈𝗈𝖽 𝖠𝖿𝗍𝖾𝗋𝗇𝗈𝗈𝗇 🌗"
+    else:
+        status = "𝖦𝗈𝗈𝖽 𝖤𝗏𝖾𝗇𝗂𝗇𝗀 🌘"
+    return status
+    
 async def get_seconds(time_string):
     def extract_value_and_unit(ts):
         value = ""
