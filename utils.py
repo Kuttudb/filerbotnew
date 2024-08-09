@@ -724,11 +724,11 @@ def get_wish():
     time = datetime.now(tz)
     now = time.strftime("%H")
     if now < "12":
-        status = "𝖦𝗈𝗈𝖽 𝖬𝗈𝗋𝗇𝗂𝗇𝗀 🌞"
+        status = "Gᴏᴏᴅ ᴍᴏʀɴɪɴɢ 🌞"
     elif now < "18":
-        status = "𝖦𝗈𝗈𝖽 𝖠𝖿𝗍𝖾𝗋𝗇𝗈𝗈𝗇 🌗"
+        status = "Gᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ 🌗"
     else:
-        status = "𝖦𝗈𝗈𝖽 𝖤𝗏𝖾𝗇𝗂𝗇𝗀 🌘"
+        status = "Gᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 🌘"
     return status
     
 async def get_seconds(time_string):
