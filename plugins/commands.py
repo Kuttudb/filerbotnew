@@ -567,10 +567,24 @@ async def start(client, message):
         except:
             pass
         return await message.reply('No such file exist.')
+        
     files = files_[0]
+    year_match = re.search(r'\b\d{4}\b', files.file_name)
+    year = year_match.group() if year_match else None
+    languages = ['English', 'Spanish', 'French','Hindi','Urdu','Punjabi','Malayalam','Tamil','Telugu','Kannada']
+    quality = ['WEB-DL','HD','PRE-DVD','CAM','WEB DL','WEB-DL','HD-RIP','HEVC','DVD','PRE-DVD']
+    formats = ['MP4', 'MKV', 'AVI', 'MOV']
+    resolutions = ['480p', '720p', '1080p','2160p','360p','240p','560p']
+    file_name = files.file_name
+    language_caption = next((lang for lang in languages if lang.lower() in file_name.lower()), None)
+    format_caption = next((fmt for fmt in formats if fmt.lower() in file_name.lower()), None)
+    resolution_caption = next((res for res in resolutions if res.lower() in file_name.lower()), None)
+    quality_caption = next((qty for qty in quality if qty.lower() in file_name.lower()), None)
+    
     title = ' ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))
     size=get_size(files.file_size)
-    f_caption=files.caption
+    final_caption = f"<b>• ɴᴀᴍᴇ : {title}\n• sɪᴢᴇ : {size}\n• ʏᴇᴀʀ : {year}\n• ʟᴀɴɢᴜᴀɢᴇ : {language_caption}\n• ʀᴇsᴏʟᴜᴛɪᴏɴ : {resolution_caption}\n• ғᴏʀᴍᴀᴛ : {format_caption}\n• ǫᴜᴀʟɪᴛʏ : {quality_caption}\n\n@MalluFiles</b>"
+    f_caption = f"{final_caption}"
     if CUSTOM_FILE_CAPTION:
         try:
             f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
