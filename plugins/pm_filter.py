@@ -141,7 +141,7 @@ async def next_page(bot, query):
             InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total}", 'total'),
             InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
             
         ])
@@ -161,7 +161,7 @@ async def next_page(bot, query):
             InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total}", 'total'),
             InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
             
         ])
@@ -2837,7 +2837,7 @@ async def auto_filter(client, name, msg, reply_msg, ai_search, spoll=False):
         try:
             if settings['max_btn']:
                 btn.append(
-                    [InlineKeyboardButton("📑 𝖯𝖠𝖦𝖤", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤??𝖳 ⌦",callback_data=f"next_{req}_{key}_{offset}")]
+                    [InlineKeyboardButton("📑 𝖯𝖠𝖦𝖤", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ⌦",callback_data=f"next_{req}_{key}_{offset}")]
                 )
             else:
                 btn.append(
