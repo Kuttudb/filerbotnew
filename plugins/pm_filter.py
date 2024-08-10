@@ -2132,7 +2132,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
 
     elif query.data in ["r_txt", "s_txt", "store_file", "tele", "coct", "filters", "ytdl", "share", "song", "shortlink_info", "sticker", "json"]:
-        if await db.has_premium_access(user_id)
+        if await db.has_premium_access(user_id):
             # Handle the button press as normal
             await handle_button_press(query.data)
         else:
