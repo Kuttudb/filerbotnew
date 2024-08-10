@@ -2798,7 +2798,6 @@ async def auto_filter(client, name, msg, reply_msg, ai_search, spoll=False):
     FRESH[key] = search
     temp.GETALL[key] = files
     temp.SHORT[message.from_user.id] = message.chat.id
-    total_results = len(files)
     if settings["button"]:
         btn = [
             [
