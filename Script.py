@@ -231,23 +231,15 @@ Nᴀᴍᴇ - {}"""
     CAPTION = """""" 
 
     IMDB_TEMPLATE_TXT = """
-<b>Query: {qurey}
+<b>{qurey} ɪs ᴀᴠᴀɪʟᴀʙʟᴇ ✅
 
-IMDb Data:
+<b>✒️ Tɪᴛʟᴇ</b>: <a href={url}>{title}</a>
+📆 Yᴇᴀʀ : <a href={url}/releaseinfo>{year}</a>
+🎧 Lᴀɴɢᴜᴀɢᴇs : <code>{languages}</code>
+📀 Rᴜɴᴛɪᴍᴇ: {runtime} Mɪɴᴜᴛᴇs</code>
 
-<b>🏷 Title</b>: <a href={url}>{title}</a>
-🎭 Genres: {genres}
-📆 Year: <a href={url}/releaseinfo>{year}</a>
-🌟 Rating: <a href={url}/ratings>{rating}</a> / 10 (based on {votes} user ratings.)
-☀️ Languages : <code>{languages}</code>
-📀 RunTime: {runtime} Minutes
-📆 Release Info : {release_date}
-🎛 Countries : <code>{countries}</code>
-
-
-⏰Result Shown in: {remaining_seconds} <i>seconds</i> 
-
-Requested by : {message.from_user.mention}</b>"""
+⏱️ Rᴇsᴜʟᴛ sʜᴏᴡɴ ɪɴ: {remaining_seconds} <i>seconds</i> 
+🐱 Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {message.from_user.mention}</b>"""
     
     ALL_FILTERS = """
 <b>Hᴇʏ {}, Tʜᴇsᴇ ᴀʀᴇ ᴍʏ ᴛʜʀᴇᴇ ᴛʏᴘᴇs ᴏғ ғɪʟᴛᴇʀs.</b>"""
