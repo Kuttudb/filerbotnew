@@ -2044,7 +2044,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode=enums.ParseMode.HTML
             )
             await handle_button_press(query.data)
-        else:
+         else:
             await query.answer("🛒 𝗕𝗨𝗬 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗧𝗢 𝗨𝗦𝗘 𝗧𝗛𝗜𝗦 𝗙𝗘𝗔𝗧𝗨𝗥𝗘! 💳 ", show_alert=True)
         
     elif query.data == "filters":
