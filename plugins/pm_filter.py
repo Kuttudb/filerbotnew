@@ -1021,17 +1021,17 @@ async def filter_qualities_cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("📺 ᴇᴘɪsᴏᴅᴇs", callback_data=f"episodes#{key}"),
                 InlineKeyboardButton("🗃️ sᴇᴀsᴏɴs",  callback_data=f"seasons#{key}")
             ]
-        )
-        btn.insert(0, [
+            )
+            btn.insert(0, [
             
-            InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
-        ])
-        btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results_str}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
-        ])
+                InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
+                InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            ])
+            btn.insert(0, [
+                InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results_str}", 'total'),
+                InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+                InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            ])
 
         else:
             btn.insert(0, 
@@ -1040,17 +1040,17 @@ async def filter_qualities_cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("📺 ᴇᴘɪsᴏᴅᴇs", callback_data=f"episodes#{key}"),
                 InlineKeyboardButton("🗃️ sᴇᴀsᴏɴs",  callback_data=f"seasons#{key}")
             ]
-        )
-        btn.insert(0, [
+            )
+            btn.insert(0, [
             
-            InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
-        ])
-        btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results_str}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
-        ])
+                InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
+                InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            ])
+            btn.insert(0, [
+                InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results_str}", 'total'),
+                InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+                InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            ])
                 
     except KeyError:
         await save_group_settings(query.message.chat.id, 'auto_delete', True)
