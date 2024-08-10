@@ -2028,20 +2028,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer(MSG_ALRT)
 
     elif query.data == "clone":
-        buttons = [[
-            InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='start')
-        ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.CLONE_TXT,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
+         if query.from_user.id in db.has_premium_access(user_id):
+            buttons = [[
+                InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='start')
+            ]]
+            await client.edit_message_media(
+                query.message.chat.id, 
+                query.message.id, 
+                InputMediaPhoto(random.choice(PICS))
+            )
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+                text=script.CLONE_TXT,
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
+            await handle_button_press(query.data)
+        else:
+            await query.answer("🛒 𝗕𝗨𝗬 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗧𝗢 𝗨𝗦𝗘 𝗧𝗛𝗜𝗦 𝗙𝗘𝗔𝗧𝗨𝗥𝗘! 💳 ", show_alert=True)
         
     elif query.data == "filters":
         buttons = [[
@@ -2131,23 +2135,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
 
-    elif query.data in ["r_txt", "s_txt", "store_file", "tele", "coct", "filters", "ytdl", "share", "song", "shortlink_info", "sticker", "json","clone"]:
-        if query.from_user.id in db.has_premium_access(user_id):
-            # Handle the button press as normal
-            await handle_button_press(query.data)
-        else:
-            await query.answer("🛒 𝗕𝗨𝗬 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗧𝗢 𝗨𝗦𝗘 𝗧𝗛𝗜𝗦 𝗙𝗘𝗔𝗧𝗨𝗥𝗘! 💳 ", show_alert=True)
-
-    elif query.data == "admin":
-        if query.from_user.id in ADMINS:
-            # Handle admin button press
-            await handle_admin_button(query.data)
-        else:
-            await query.answer("⚙️ Yᴏᴜ ᴅᴏɴᴛ ʜᴀᴠᴇ ᴀᴄᴄᴇss ᴛᴏ ᴛʜɪs sᴇᴛᴛɪɴɢs!", show_alert=True)
-
-    elif query.data == "start":
-        # Handle home button press
-        await handle_start_button(query.data)
 
     
     elif query.data == "about":
@@ -2246,21 +2233,26 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "admin":
-        buttons = [[
-            InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help'),
-            InlineKeyboardButton('ᴇxᴛʀᴀ', callback_data='extra')
-        ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.ADMIN_TXT,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
+        if query.from_user.id in ADMINS:
+            buttons = [[
+                InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help'),
+                InlineKeyboardButton('ᴇxᴛʀᴀ', callback_data='extra')
+            ]]
+            await client.edit_message_media(
+                query.message.chat.id, 
+                query.message.id, 
+                InputMediaPhoto(random.choice(PICS))
+            )
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+                text=script.ADMIN_TXT,
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
+            await handle_admin_button(query.data)
+        else:
+            await query.answer("⚙️ Yᴏᴜ ᴅᴏɴᴛ ʜᴀᴠᴇ ᴀᴄᴄᴇss ᴛᴏ ᴛʜɪs sᴇᴛᴛɪɴɢs!", show_alert=True)
+            
     
     elif query.data == "store_file":
         buttons = [[
