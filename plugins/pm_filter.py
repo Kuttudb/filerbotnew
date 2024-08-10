@@ -114,7 +114,7 @@ async def next_page(bot, query):
         return
     temp.GETALL[key] = files
     temp.SHORT[query.from_user.id] = query.message.chat.id
-    total_results = len(files)
+    
     settings = await get_settings(query.message.chat.id)
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings['button']:
@@ -157,12 +157,13 @@ async def next_page(bot, query):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
         ])
     try:
         if settings['max_btn']:
@@ -355,7 +356,7 @@ async def filter_yearss_cb_handler(client: Client, query: CallbackQuery):
         return
     temp.GETALL[key] = files
     settings = await get_settings(message.chat.id)
-    total_results = len(files)
+    
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
         btn = [
@@ -376,12 +377,13 @@ async def filter_yearss_cb_handler(client: Client, query: CallbackQuery):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
         ])
 
     if offset != "":
@@ -499,7 +501,7 @@ async def filter_episodes_cb_handler(client: Client, query: CallbackQuery):
         return
     temp.GETALL[key] = files
     settings = await get_settings(message.chat.id)
-    total_results = len(files)
+    
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
         btn = [
@@ -520,12 +522,13 @@ async def filter_episodes_cb_handler(client: Client, query: CallbackQuery):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
         ])
     else:
         btn = []
@@ -539,12 +542,13 @@ async def filter_episodes_cb_handler(client: Client, query: CallbackQuery):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
         ])
 
     if offset != "":
@@ -665,7 +669,6 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         await query.answer("🚫 𝗡𝗢 𝗙𝗜𝗟𝗘𝗦 𝗪𝗘𝗥𝗘 𝗙𝗢𝗨𝗡𝗗 🚫", show_alert=1)
         return
     temp.GETALL[key] = files
-    total_results = len(files)
     settings = await get_settings(message.chat.id)
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
@@ -687,12 +690,13 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
         ])
     else:
         btn.insert(0, 
@@ -705,12 +709,13 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
         ])
 
     if offset != "":
@@ -858,7 +863,7 @@ async def filter_seasons_cb_handler(client: Client, query: CallbackQuery):
         return
     temp.GETALL[key] = files
     settings = await get_settings(message.chat.id)
-    total_results = len(files)
+    
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
         btn = [
@@ -879,12 +884,13 @@ async def filter_seasons_cb_handler(client: Client, query: CallbackQuery):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 Files : {total_results}", 'total'),
-           InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
         ])
         
     offset = 0
@@ -900,7 +906,6 @@ async def filter_seasons_cb_handler(client: Client, query: CallbackQuery):
         cur_time = datetime.now(pytz.timezone('Asia/Kolkata')).time()
         time_difference = timedelta(hours=cur_time.hour, minutes=cur_time.minute, seconds=(cur_time.second+(cur_time.microsecond/1000000))) - timedelta(hours=curr_time.hour, minutes=curr_time.minute, seconds=(curr_time.second+(curr_time.microsecond/1000000)))
         remaining_seconds = "{:.2f}".format(time_difference.total_seconds())
-        total_results = len(files)
         cap = await get_cap(settings, remaining_seconds, files, query, total_results, search)
         try:
             await query.message.edit_text(text=cap, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
@@ -988,7 +993,6 @@ async def filter_qualities_cb_handler(client: Client, query: CallbackQuery):
         return
     temp.GETALL[key] = files
     settings = await get_settings(message.chat.id)
-    total_results = len(files)
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
         btn = [
@@ -1022,17 +1026,18 @@ async def filter_qualities_cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("📺 ᴇᴘɪsᴏᴅᴇs", callback_data=f"episodes#{key}"),
                 InlineKeyboardButton("🗃️ sᴇᴀsᴏɴs",  callback_data=f"seasons#{key}")
             ]
-            )
-            btn.insert(0, [
+        )
+        btn.insert(0, [
             
-                InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-                InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
-            ])
-            btn.insert(0, [
-                InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-                InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-                InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
-            ])
+            InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+        ])
+        btn.insert(0, [
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
+        ])
 
         else:
             btn.insert(0, 
@@ -1041,17 +1046,18 @@ async def filter_qualities_cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("📺 ᴇᴘɪsᴏᴅᴇs", callback_data=f"episodes#{key}"),
                 InlineKeyboardButton("🗃️ sᴇᴀsᴏɴs",  callback_data=f"seasons#{key}")
             ]
-            )
-            btn.insert(0, [
+        )
+        btn.insert(0, [
             
-                InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-                InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
-            ])
-            btn.insert(0, [
-                InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
-                InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
-                InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
-            ])
+            InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+        ])
+        btn.insert(0, [
+            InlineKeyboardButton(f"🗂 ғɪʟᴇs : {total_results}", 'total'),
+            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
+            
+        ])
                 
     except KeyError:
         await save_group_settings(query.message.chat.id, 'auto_delete', True)
@@ -2850,7 +2856,7 @@ async def auto_filter(client, name, msg, reply_msg, ai_search, spoll=False):
     cur_time = datetime.now(pytz.timezone('Asia/Kolkata')).time()
     time_difference = timedelta(hours=cur_time.hour, minutes=cur_time.minute, seconds=(cur_time.second+(cur_time.microsecond/1000000))) - timedelta(hours=curr_time.hour, minutes=curr_time.minute, seconds=(curr_time.second+(curr_time.microsecond/1000000)))
     remaining_seconds = "{:.2f}".format(time_difference.total_seconds())
-    total_results = len(files)
+    
     TEMPLATE = script.IMDB_TEMPLATE_TXT
     if imdb:
         cap = TEMPLATE.format(
