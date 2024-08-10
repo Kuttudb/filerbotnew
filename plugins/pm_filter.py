@@ -2131,7 +2131,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
 
-    elif query.data in ["r_txt", "s_txt", "store_file", "tele", "coct", "filters", "ytdl", "share", "song", "shortlink_info", "sticker", "json"]:
+    elif query.data in ["r_txt", "s_txt", "store_file", "tele", "coct", "filters", "ytdl", "share", "song", "shortlink_info", "sticker", "json","clone"]:
         if query.from_user.id in db.has_premium_access(user_id):
             # Handle the button press as normal
             await handle_button_press(query.data)
