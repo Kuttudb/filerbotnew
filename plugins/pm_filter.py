@@ -2079,7 +2079,66 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+        
+    elif query.data == "help":
+        buttons = [
+            [
+                InlineKeyboardButton('⚙️ ᴀᴅᴍɪɴ ᴏɴʟʏ 🔧', callback_data='admin'),
+            ], 
+            [ 
+                InlineKeyboardButton('✏️ ʀᴇɴᴀᴍᴇ', callback_data='r_txt'),   
+                InlineKeyboardButton('🔗 ғɪʟᴇ ᴛᴏ ʟɪɴᴋ', callback_data='s_txt') 
+            ], 
+            [ 
+                InlineKeyboardButton('🗃️ ꜰɪʟᴇ ꜱᴛᴏʀᴇ', callback_data='store_file'),   
+                InlineKeyboardButton('📰 ᴛᴇʟᴇɢʀᴀᴘʜ', callback_data='tele') 
+            ], 
+            [ 
+                InlineKeyboardButton('🖇️ ᴄᴏɴɴᴇᴄᴛɪᴏɴꜱ', callback_data='coct'), 
+                InlineKeyboardButton('🛗 ꜰɪʟᴛᴇʀꜱ', callback_data='filters')
+            ], 
+            [
+                InlineKeyboardButton('📥 ʏᴛ ᴅᴏᴡɴʟᴏᴀᴅ', callback_data='ytdl'), 
+                InlineKeyboardButton('📮 ꜱʜᴀʀᴇ ᴛᴇxᴛ', callback_data='share')
+            ], 
+            [
+                InlineKeyboardButton('🎵 ꜱᴏɴɢ', callback_data='song'),
+                InlineKeyboardButton('💸 ᴇᴀʀɴ ᴍᴏɴᴇʏ', callback_data='shortlink_info')
+            ], 
+            [
+                InlineKeyboardButton('📇 ꜱᴛɪᴄᴋᴇʀ-ɪᴅ', callback_data='sticker'),
+                InlineKeyboardButton('📝 ᴊ-ꜱᴏɴ', callback_data='json')
+            ], 
+            [             
+                InlineKeyboardButton('🏠 ʜᴏᴍᴇ 🏠', callback_data='start')
+            ]
+        ]
+
+        if CLONE_MODE:
+            buttons.append([InlineKeyboardButton('🤖 Cʀᴇᴀᴛᴇ Yᴏᴜʀ Oᴡɴ Cʟᴏɴᴇ Bᴏᴛ 🤖', callback_data='clone')])
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(random.choice(PICS))
+        )
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+
     
+    
+        if query.data not in ['admin', 'start'] and not is_premium_user(user_id):
+            await query.answer("You need a premium subscription to use this feature.", show_alert=True)
+        else:
+            # Handle the other buttons normally
+            # Add your logic for handling other buttons here
+            pass
+
     elif query.data == "help":
         buttons = [[
              InlineKeyboardButton('⚙️ ᴀᴅᴍɪɴ ᴏɴʟʏ 🔧', callback_data='admin'),
