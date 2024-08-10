@@ -876,7 +876,7 @@ async def filter_seasons_cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results_str}", 'total'),
+            InlineKeyboardButton(f"🗂 Files : {total_results_str}", 'total'),
            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}"),
             InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
