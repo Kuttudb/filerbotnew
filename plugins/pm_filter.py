@@ -2206,42 +2206,54 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "subscription":
         user_id = query.from_user.id  # Correctly fetching the user ID
-        if await db.has_premium_access(user_id):
-            remaining_time = await db.check_remaining_usage(user_id)             
-            expiry_time = datetime.datetime.now() + remaining_time
+        try:
+            if await db.has_premium_access(user_id):
+                remaining_time = await db.check_remaining_usage(user_id)
+                expiry_time = datetime.datetime.now() + remaining_time
 
-            buttons = [
-                [InlineKeyboardButton('⇚Back', callback_data='start')]
-            ]
-            reply_markup = InlineKeyboardMarkup(buttons)
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
-            await query.message.edit_text(
-                text=f"👑 ʏᴏᴜ ᴀʀᴇ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪʙᴇʀ 👑\n\n**ʏᴏᴜʀ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs :\n\n⏱️ ʀᴇᴍᴀɪɴɪɴɢ ᴛɪᴍᴇ : {remaining_time}\n\n📆 ᴇxᴘɪʀᴇs ᴏɴ : {expiry_time}**",
-                reply_markup=reply_markup,
-                parse_mode=enums.ParseMode.HTML
-            )
-        else:
-            buttons = [
-                [InlineKeyboardButton('🎁 ɪɴᴠɪᴛᴇ & ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ 🎁', url=f'https://telegram.me/share/url?url=https://telegram.me/{temp.U_NAME}?start=VJ-{user_id}')],
-                [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium")],
-                [InlineKeyboardButton('⇚Back', callback_data='start')]
-            ]
-            reply_markup = InlineKeyboardMarkup(buttons)
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
-            await query.message.edit_text(
-                text=script.SUBSCRIPTION_TXT.format(REFERAL_PREMEIUM_TIME, temp.U_NAME, query.from_user.id, REFERAL_COUNT),
-                reply_markup=reply_markup,
-                parse_mode=enums.ParseMode.HTML
-            )
+                buttons = [
+                    [InlineKeyboardButton('⇚Back', callback_data='start')]
+                ]
+                reply_markup = InlineKeyboardMarkup(buttons)
 
+                # Edit the media first
+                await client.edit_message_media(
+                    chat_id=query.message.chat.id, 
+                    message_id=query.message.id, 
+                    media=InputMediaPhoto(random.choice(PICS))
+                )
+
+                # Then edit the text
+                await query.message.edit_text(
+                    text=f"👑 ʏᴏᴜ ᴀʀᴇ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪʙᴇʀ 👑\n\n**ʏᴏᴜʀ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs :\n\n⏱️ ʀᴇᴍᴀɪɴɪɴɢ ᴛɪᴍᴇ : {remaining_time}\n\n📆 ᴇxᴘɪʀᴇs ᴏɴ : {expiry_time}**",
+                    reply_markup=reply_markup,
+                    parse_mode=enums.ParseMode.HTML
+                )
+            else:
+                buttons = [
+                    [InlineKeyboardButton('🎁 ɪɴᴠɪᴛᴇ & ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ 🎁', url=f'https://telegram.me/share/url?url=https://telegram.me/{temp.U_NAME}?start=VJ-{user_id}')],
+                    [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium")],
+                    [InlineKeyboardButton('⇚Back', callback_data='start')]
+                ]
+                reply_markup = InlineKeyboardMarkup(buttons)
+
+                # Edit the media first
+                await client.edit_message_media(
+                    chat_id=query.message.chat.id, 
+                    message_id=query.message.id, 
+                    media=InputMediaPhoto(random.choice(PICS))
+                )
+
+                # Then edit the text
+                await query.message.edit_text(
+                    text=script.SUBSCRIPTION_TXT.format(REFERAL_PREMEIUM_TIME, temp.U_NAME, query.from_user.id, REFERAL_COUNT),
+                    reply_markup=reply_markup,
+                    parse_mode=enums.ParseMode.HTML
+                )
+        except Exception as e:
+            await query.message.reply_text(f"An error occurred: {str(e)}")
+
+        
     
         
     elif query.data == "manuelfilter":
