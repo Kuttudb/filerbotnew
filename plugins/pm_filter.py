@@ -2205,7 +2205,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "subscription":
-            user_id  = message.from_user.id
+        user_id  = message.from_user.id
         if await db.has_premium_access(user_id):         
             remaining_time = await db.check_remaining_uasge(user_id)             
             expiry_time = remaining_time + datetime.datetime.now()
