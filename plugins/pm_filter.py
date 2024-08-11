@@ -2205,22 +2205,28 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "subscription":
-        buttons = [
-            [InlineKeyboardButton('🎁 ɪɴᴠɪᴛᴇ & ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ 🎁', url=f'https://telegram.me/share/url?url=https://telegram.me/{temp.U_NAME}?start=VJ-{query.from_user.id}')],
-            [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium")],
-            [InlineKeyboardButton('⇚Back', callback_data='start')]
-        ]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        await query.message.edit_text(
-            text=script.SUBSCRIPTION_TXT.format(REFERAL_PREMEIUM_TIME, temp.U_NAME, query.from_user.id, REFERAL_COUNT),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
+            user_id  = message.from_user.id
+        if await db.has_premium_access(user_id):         
+            remaining_time = await db.check_remaining_uasge(user_id)             
+            expiry_time = remaining_time + datetime.datetime.now()
+            await message.reply_text(f"👑 ʏᴏᴜ ᴀʀᴇ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪʙᴇʀ 👑\n\n**ʏᴏᴜʀ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs :\n\n⏱️ ʀᴇᴍɪɴɪɴɢ ᴛɪᴍᴇ : {remaining_time}\n\n📆 ᴇxᴘɪʀᴇ ᴏɴ : {expiry_time}**")
+        else:
+            buttons = [
+                [InlineKeyboardButton('🎁 ɪɴᴠɪᴛᴇ & ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ 🎁', url=f'https://telegram.me/share/url?url=https://telegram.me/{temp.U_NAME}?start=VJ-{query.from_user.id}')],
+                [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium")],
+                [InlineKeyboardButton('⇚Back', callback_data='start')]
+            ]
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await client.edit_message_media(
+                query.message.chat.id, 
+                query.message.id, 
+                InputMediaPhoto(random.choice(PICS))
+            )
+            await query.message.edit_text(
+                text=script.SUBSCRIPTION_TXT.format(REFERAL_PREMEIUM_TIME, temp.U_NAME, query.from_user.id, REFERAL_COUNT),
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
        
     
         
