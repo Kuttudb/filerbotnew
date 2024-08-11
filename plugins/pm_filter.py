@@ -2540,7 +2540,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if await db.has_premium_access(user_id):
             buttons = [
                 [InlineKeyboardButton('🔞 ᴊᴏɪɴ ᴛᴏ ᴄʜᴀɴɴᴇʟ 👅', url=f'http://t.me/{temp.U_NAME}?startgroup=true')],
-                [InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')]
+                [InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='start')]
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.edit_text(
