@@ -90,8 +90,8 @@ async def pm_text(bot, message):
         await message.reply_text(
             text=f"<b>ʜᴇʏ {user} 😍,\n\nᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴍᴏᴠɪᴇs ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳</b>",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("💸 Buy Premium", url="https://yourpremiumlink.com")],
-                [InlineKeyboardButton("📝 Request Here", url="https://t.me/vj_bots")]
+                [InlineKeyboardButton("💸 Buy Premium", callback_data='subscription')],
+                [InlineKeyboardButton("📝 Request Here", url=GRP_LNK)]
             ])
         )
         return
