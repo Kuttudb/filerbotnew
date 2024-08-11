@@ -2524,8 +2524,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         # Check if the user has premium access
         if await db.has_premium_access(user_id):
             buttons = [
-                [InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')],
-                [InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', url=f'http://t.me/{temp.U_NAME}?startgroup=true')]
+                [InlineKeyboardButton('🔞 ᴊᴏɪɴ ᴛᴏ ᴄʜᴀɴɴᴇʟ 👅', url=f'http://t.me/{temp.U_NAME}?startgroup=true')],
+                [InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')]
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.edit_text(
@@ -2544,7 +2544,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InputMediaPhoto(random.choice(PICS))
             )
             await query.message.edit_text(
-                text=script.YTDL_TXT,
+                text=script.ADULT_TXT,
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
     )
