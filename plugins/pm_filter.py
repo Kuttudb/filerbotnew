@@ -2061,30 +2061,30 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer(MSG_ALRT)
 
     elif query.data == "clone":
-    user_id = query.from_user.id
+        user_id = query.from_user.id
 
-    # Check if the user has premium access
-    if await db.has_premium_access(user_id):
-        buttons = [[
-            InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='start')
-        ]]
+        # Check if the user has premium access
+        if await db.has_premium_access(user_id):
+            buttons = [[
+                InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='start')
+            ]]
 
-        await client.edit_message_media(
-            chat_id=query.message.chat.id,
-            message_id=query.message.id,
-            media=InputMediaPhoto(random.choice(PICS))
-        )
+            await client.edit_message_media(
+                chat_id=query.message.chat.id,
+                message_id=query.message.id,
+                media=InputMediaPhoto(random.choice(PICS))
+            )
         
-        reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(buttons)
         
-        await query.message.edit_text(
-            text=script.CLONE_TXT,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    else:
+            await query.message.edit_text(
+                text=script.CLONE_TXT,
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
+        else:
         # If the user doesn't have premium access, show an alert
-        await query.answer("🛒 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ! 💳", show_alert=True)
+            await query.answer("🛒 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ! 💳", show_alert=True)
 
        
     elif query.data == "filters":
