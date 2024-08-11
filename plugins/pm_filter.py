@@ -2204,9 +2204,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "subscription":
-        buttons = [[
-            InlineKeyboardButton('⇚Back', callback_data='start')
-        ]]
+        buttons = [
+            [InlineKeyboardButton('🎁 ɪɴᴠɪᴛᴇ & ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ 🎁', url=f'https://telegram.me/share/url?url=https://telegram.me/{temp.U_NAME}?start=VJ-{query.from_user.id}')],
+            [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium")],
+            [InlineKeyboardButton('⇚Back', callback_data='start')]
+        ]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
             query.message.chat.id, 
