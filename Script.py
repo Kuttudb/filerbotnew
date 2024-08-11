@@ -4,9 +4,9 @@
 
 
 class script(object):
-    START_TXT = """<b><blockquote>Hᴇʟʟᴏ {}, ᴍʏ ɴᴀᴍᴇ <a href=https://t.me/{}>{}</a></blockquote>
+    START_TXT = """<blockquote><b>Hᴇʟʟᴏ {}, {}</b></blockquote>
     
-ɪᴍ ᴀ sɪᴍᴘʟᴇ ᴍᴏᴠɪᴇ,sᴇʀɪᴇs,ᴀɴɪᴍᴇ sᴇᴀʀᴄʜ ʀᴏʙᴏᴛ ʙʏ ᴍᴀʟʟᴜғɪʟᴇs. Jᴜsᴛ sᴇɴᴅ ᴍᴇ ᴛʜᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴀɴᴅ ʏᴇᴀʀ.🧞‍♀️"""
+<b>ɪᴍ ᴀ sɪᴍᴘʟᴇ ᴍᴏᴠɪᴇ,sᴇʀɪᴇs,ᴀɴɪᴍᴇ sᴇᴀʀᴄʜ ʀᴏʙᴏᴛ ʙʏ ᴍᴀʟʟᴜғɪʟᴇs. Jᴜsᴛ sᴇɴᴅ ᴍᴇ ᴛʜᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴀɴᴅ ʏᴇᴀʀ.🧞‍♀️</b>"""
 
     CLONE_START_TXT = """<b><blockquote>ʜᴇʟʟᴏ {}, ᴍʏ ɴᴀᴍᴇ <a href=https://t.me/{}>{}</a></blockquote>
     
