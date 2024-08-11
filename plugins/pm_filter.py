@@ -2518,6 +2518,41 @@ async def cb_handler(client: Client, query: CallbackQuery):
             # If the user doesn't have premium access, show an alert
             await query.answer("🛒 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ! 💳", show_alert=True)
             
+    elif query.data == "18plus":
+        user_id = query.from_user.id
+
+        # Check if the user has premium access
+        if await db.has_premium_access(user_id):
+            buttons = [
+                [InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')],
+                [InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', url=f'http://t.me/{temp.U_NAME}?startgroup=true']
+            ]
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+                text="● ◌ ◌"
+            )
+            await query.message.edit_text(
+                text="● ● ◌"
+            )
+            await query.message.edit_text(
+                text="● ● ●"
+            )
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await client.edit_message_media(
+                query.message.chat.id, 
+                query.message.id, 
+                InputMediaPhoto(random.choice(PICS))
+            )
+            await query.message.edit_text(
+                text=script.YTDL_TXT,
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+    )
+        else:
+            # If the user doesn't have premium access, show an alert
+            await query.answer("🛒 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ! 💳", show_alert=True)
+            
+           
     elif query.data == "share":
             btn = [[
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="help"),
