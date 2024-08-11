@@ -2224,8 +2224,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
                 # Then edit the text
                 await query.message.edit_text(
-                    text=f"👑 ʏᴏᴜ ᴀʀᴇ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪʙᴇʀ 👑\n\n"
-                         f"**ᴛᴏ ᴋɴᴏᴡ ʏᴏᴜʀ ᴘʟᴀɴ ᴠᴀʟɪᴅɪᴛʏ : /myplan\n\n",
+                    text=f"👑 <b>ʏᴏᴜ ᴀʀᴇ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪʙᴇʀ</b> 👑\n\n"
+                         f"<b>ᴛᴏ ᴋɴᴏᴡ ʏᴏᴜʀ ᴘʟᴀɴ ᴠᴀʟɪᴅɪᴛʏ : /myplan</b>\n\n",
                     reply_markup=reply_markup,
                     parse_mode=enums.ParseMode.HTML
                 )
