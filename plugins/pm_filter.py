@@ -3082,7 +3082,7 @@ async def auto_filter(client, name, msg, reply_msg, ai_search, spoll=False):
 
     if imdb and imdb.get('poster'):
         try:
-            hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap, reply_markup=InlineKeyboardMarkup(btn))
+            hehe = await message.reply_photo(photo=imdb.get('poster'), has_spoiler=True, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
             await reply_msg.delete()
             try:
                 if settings['auto_delete']:
