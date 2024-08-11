@@ -10,6 +10,10 @@ import random
 async def rename_start(client, message):
     if RENAME_MODE == False:
         return 
+        user_id = query.from_user.id
+        # Check if the user has premium access
+    if not await db.has_premium_access(user_id):
+        return
     msg = await client.ask(message.chat.id, "**Now send me your file/video/audio to rename.**")
     if not msg.media:
         return await message.reply("**Please send me supported media.**")
