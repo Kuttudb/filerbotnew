@@ -90,7 +90,7 @@ async def pm_text(bot, message):
         await message.reply_text(
             text=f"<b>ʜᴇʏ {user} 😍,\n\nᴘʀɪᴠᴀᴛᴇ sᴇᴀʀᴄʜ ɪs ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ғʀᴇᴇ ᴜsᴇʀs.ᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴘᴍ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳/nᴏʀ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴏᴜʀ <a href=https://t.me/mallufilesgroup>ᴍᴏᴠɪᴇ ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ</a> ғᴏʀ  ғʀᴇᴇ...🎰</b>",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium"')],
+                [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium")],
                 [InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ", url=GRP_LNK)]
             ])
         )
