@@ -77,14 +77,47 @@ async def pm_text(bot, message):
     content = message.text
     user = message.from_user.first_name
     user_id = message.from_user.id
-    if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
-    if PM_SEARCH == True:
+
+    # Log every incoming message to the LOG_CHANNEL
+    await bot.send_message(
+        chat_id=LOG_CHANNEL, 
+        text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
+    )
+
+    # Check if the user is a premium user
+    if not await db.has_premium_access(user_id):
+        # If not a premium user, send a message prompting them to buy a subscription
+        await message.reply_text(
+            text=f"<b>ʜᴇʏ {user} 😍,\n\nᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴍᴏᴠɪᴇs ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳</b>",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("💸 Buy Premium", url="https://yourpremiumlink.com")],
+                [InlineKeyboardButton("📝 Request Here", url="https://t.me/vj_bots")]
+            ])
+        )
+        return
+
+    # Ignore commands and hashtags
+    if content.startswith("/") or content.startswith("#"):
+        return
+
+    # If PM_SEARCH is enabled, perform the search
+    if PM_SEARCH:
         ai_search = True
-        reply_msg = await bot.send_message(message.from_user.id, f"<b><i>Searching For {content} 🔍</i></b>", reply_to_message_id=message.id)
+        reply_msg = await bot.send_message(
+            chat_id=message.from_user.id, 
+            text=f"<b><i>Searching For {content} 🔍</i></b>", 
+            reply_to_message_id=message.id
+        )
         await auto_filter(bot, content, message, reply_msg, ai_search)
     else:
-        await message.reply_text(text=f"<b>ʜᴇʏ {user} 😍 ,\n\nʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ᴍᴏᴠɪᴇs ꜰʀᴏᴍ ʜᴇʀᴇ. ʀᴇǫᴜᴇsᴛ ɪᴛ ɪɴ ᴏᴜʀ <a href=https://t.me/vj_bots>ᴍᴏᴠɪᴇ ɢʀᴏᴜᴘ</a> ᴏʀ ᴄʟɪᴄᴋ ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ 👇</b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ ", url=f"https://t.me/vj_bots")]]))
-        await bot.send_message(chat_id=LOG_CHANNEL, text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>")
+        # Otherwise, direct the user to request movies in the group
+        await message.reply_text(
+            text=f"<b>ʜᴇʏ {user} 😍 ,\n\nʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ᴍᴏᴠɪᴇs ꜰʀᴏᴍ ʜᴇʀᴇ. ʀᴇǫᴜᴇsᴛ ɪᴛ ɪɴ ᴏᴜʀ <a href=https://t.me/vj_bots>ᴍᴏᴠɪᴇ ɢʀᴏᴜᴘ</a> ᴏʀ ᴄʟɪᴄᴋ ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ 👇</b>",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ", url=f"https://t.me/vj_bots")]
+            ])
+        )
+
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
