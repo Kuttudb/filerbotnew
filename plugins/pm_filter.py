@@ -88,7 +88,7 @@ async def pm_text(bot, message):
     if not await db.has_premium_access(user_id):
         # If not a premium user, send a message prompting them to buy a subscription
         await message.reply_text(
-            text=f"<b>ʜᴇʏ {user} 😍,\n\nᴘʀɪᴠᴀᴛᴇ sᴇᴀʀᴄʜ ɪs ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ғʀᴇᴇ ᴜsᴇʀs.ᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴘᴍ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳/nᴏʀ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴏᴜʀ <a href=https://t.me/mallufilesgroup>ᴍᴏᴠɪᴇ ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ</a> ғᴏʀ  ғʀᴇᴇ...🎰</b>",
+            text=f"<b>ʜᴇʏ {user} 😍,\n\nᴘʀɪᴠᴀᴛᴇ sᴇᴀʀᴄʜ ɪs ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ғʀᴇᴇ ᴜsᴇʀs.ᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴘᴍ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳\nᴏʀ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴏᴜʀ <a href=https://t.me/mallufilesgroup>ᴍᴏᴠɪᴇ ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ</a> ғᴏʀ  ғʀᴇᴇ...🎰</b>",
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium")],
                 [InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ", url=GRP_LNK)]
