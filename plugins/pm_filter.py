@@ -88,10 +88,10 @@ async def pm_text(bot, message):
     if not await db.has_premium_access(user_id):
         # If not a premium user, send a message prompting them to buy a subscription
         await message.reply_text(
-            text=f"<b>ʜᴇʏ {user} 😍,\n\nᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴍᴏᴠɪᴇs ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳</b>",
+            text=f"<b>ʜᴇʏ {user} 😍,\n\nᴘʀɪᴠᴀᴛᴇ sᴇᴀʀᴄʜ ɪs ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ғʀᴇᴇ ᴜsᴇʀs.ᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴘᴍ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳/nᴏʀ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ ғᴏʀ  ғʀᴇᴇ...🎰</b>",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("💸 Buy Premium", callback_data='pmsubscription')],
-                [InlineKeyboardButton("📝 Request Here", url=GRP_LNK)]
+                [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium"')],
+                [InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ", url=GRP_LNK)]
             ])
         )
         return
