@@ -88,7 +88,7 @@ async def pm_text(bot, message):
     if not await db.has_premium_access(user_id):
         # If not a premium user, send a message prompting them to buy a subscription
         await message.reply_text(
-            text=f"<b>ʜᴇʏ {user} 😍,\n\nᴘʀɪᴠᴀᴛᴇ sᴇᴀʀᴄʜ ɪs ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ғʀᴇᴇ ᴜsᴇʀs.ᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴘᴍ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳/nᴏʀ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ ғᴏʀ  ғʀᴇᴇ...🎰</b>",
+            text=f"<b>ʜᴇʏ {user} 😍,\n\nᴘʀɪᴠᴀᴛᴇ sᴇᴀʀᴄʜ ɪs ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ғʀᴇᴇ ᴜsᴇʀs.ᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴘᴍ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳/nᴏʀ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴏᴜʀ <a href=https://t.me/mallufilesgroup>ᴍᴏᴠɪᴇ ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ</a> ғᴏʀ  ғʀᴇᴇ...🎰</b>",
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("💸 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ", callback_data="buy_premium"')],
                 [InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ɢʀᴏᴜᴘ", url=GRP_LNK)]
@@ -112,9 +112,9 @@ async def pm_text(bot, message):
     else:
         # Otherwise, direct the user to request movies in the group
         await message.reply_text(
-            text=f"<b>ʜᴇʏ {user} 😍 ,\n\nʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ᴍᴏᴠɪᴇs ꜰʀᴏᴍ ʜᴇʀᴇ. ʀᴇǫᴜᴇsᴛ ɪᴛ ɪɴ ᴏᴜʀ <a href=https://t.me/vj_bots>ᴍᴏᴠɪᴇ ɢʀᴏᴜᴘ</a> ᴏʀ ᴄʟɪᴄᴋ ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ 👇</b>",
+            text=f"<b>ʜᴇʏ {user} 😍 ,\n\nʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ᴍᴏᴠɪᴇs ꜰʀᴏᴍ ʜᴇʀᴇ. ʀᴇǫᴜᴇsᴛ ɪᴛ ɪɴ ᴏᴜʀ <a href=https://t.me/mallufilesgroup>ᴍᴏᴠɪᴇ ɢʀᴏᴜᴘ</a> ᴏʀ ᴄʟɪᴄᴋ ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ 👇</b>",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ", url=f"https://t.me/vj_bots")]
+                [InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ", url=f"")]
             ])
         )
 
@@ -1975,45 +1975,52 @@ async def cb_handler(client: Client, query: CallbackQuery):
         _, file_id = query.data.split(":")
         try:
             user_id = query.from_user.id
-            username =  query.from_user.mention 
+            username = query.from_user.mention
+        
+            # Check if the user has premium access
+            if await db.has_premium_access(user_id):
+                log_msg = await client.send_cached_media(
+                    chat_id=LOG_CHANNEL,
+                    file_id=file_id,
+                )
+                fileName = quote_plus(get_name(log_msg))
+                stream = f"{URL}watch/{str(log_msg.id)}/{fileName}?hash={get_hash(log_msg)}"
+                download = f"{URL}{str(log_msg.id)}/{fileName}?hash={get_hash(log_msg)}"
 
-            log_msg = await client.send_cached_media(
-                chat_id=LOG_CHANNEL,
-                file_id=file_id,
-            )
-            fileName = {quote_plus(get_name(log_msg))}
-            stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-            download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+                xo = await query.message.reply_text('🔐')
+                await asyncio.sleep(1)
+                await xo.delete()
 
-            xo = await query.message.reply_text(f'🔐')
-            await asyncio.sleep(1)
-            await xo.delete()
+                await log_msg.reply_text(
+                    text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᴇ : {fileName}",
+                    quote=True,
+                    disable_web_page_preview=True,
+                    reply_markup=InlineKeyboardMarkup([
+                        [InlineKeyboardButton("🚀 Fast Download 🚀", url=download), 
+                         InlineKeyboardButton('🖥️ Watch online 🖥️', url=stream)]
+                    ])
+                )
 
-            await log_msg.reply_text(
-                text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
-                quote=True,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=download),  # we download Link
-                                                    InlineKeyboardButton('🖥️ Watch online 🖥️', url=stream)]])  # web stream Link
-            )
-            button = [[
-                InlineKeyboardButton("🚀 ғᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ 🚀", url=download),
-                InlineKeyboardButton('🖥️ ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', url=stream)
-            ],[
-                InlineKeyboardButton("📱 ᴡᴀᴛᴄʜ ɪɴ ᴡᴇʙ ᴀᴘᴘ 📱", web_app=WebAppInfo(url=stream))
-            ]]
-            await query.message.reply_text(
-                text="•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ☠︎⚔",
-                quote=True,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(button)
-            )
+                button = [[
+                    InlineKeyboardButton("🚀 ғᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ 🚀", url=download),
+                    InlineKeyboardButton('🖥️ ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', url=stream)
+                ],[
+                    InlineKeyboardButton("📱 ᴡᴀᴛᴄʜ ɪɴ ᴡᴇʙ ᴀᴘᴘ 📱", web_app=WebAppInfo(url=stream))
+                ]]
+                await query.message.reply_text(
+                    text="•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ☠︎⚔",
+                    quote=True,
+                    disable_web_page_preview=True,
+                    reply_markup=InlineKeyboardMarkup(button)
+                )
+            else:
+                # If the user doesn't have premium access, show an alert
+                await query.answer("🛒 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ! 💳", show_alert=True)
+            
         except Exception as e:
             print(e)  # print the error message
             await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
-            return
-    # don't change anything without contacting me @kingvj01
-
+        
     elif query.data == "reqinfo":
         await query.answer(text=script.REQINFO, show_alert=True)
 
@@ -2212,16 +2219,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
        
-    elif query.data == "pmsubscription":
-        buttons = [[
-            InlineKeyboardButton('⇚Back', callback_data='start')
-        ]]
-        
-        await query.message.edit_text(
-            text=script.SUBSCRIPTION_TXT.format(REFERAL_PREMEIUM_TIME, temp.U_NAME, query.from_user.id, REFERAL_COUNT),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
+    
         
     elif query.data == "manuelfilter":
         buttons = [[
