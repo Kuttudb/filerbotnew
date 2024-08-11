@@ -90,7 +90,7 @@ async def pm_text(bot, message):
         await message.reply_text(
             text=f"<b>ʜᴇʏ {user} 😍,\n\nᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss ᴛᴏ ᴍᴏᴠɪᴇs ᴀɴᴅ ᴏᴛʜᴇʀ ꜰᴇᴀᴛᴜʀᴇs, ʏᴏᴜ ɴᴇᴇᴅ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ. 💳</b>",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("💸 Buy Premium", callback_data='subscription')],
+                [InlineKeyboardButton("💸 Buy Premium", callback_data='pmsubscription')],
                 [InlineKeyboardButton("📝 Request Here", url=GRP_LNK)]
             ])
         )
@@ -2211,6 +2211,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+       
+       elif query.data == "pmsubscription":
+        buttons = [[
+            InlineKeyboardButton('⇚Back', callback_data='start')
+        ]]
+        
+        await query.message.edit_text(
+            text=script.SUBSCRIPTION_TXT.format(REFERAL_PREMEIUM_TIME, temp.U_NAME, query.from_user.id, REFERAL_COUNT),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+        
     elif query.data == "manuelfilter":
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='filters'),
