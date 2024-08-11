@@ -2208,8 +2208,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         user_id = query.from_user.id  # Correctly fetching the user ID
         try:
             if await db.has_premium_access(user_id):
-                remaining_time = await db.check_remaining_usage(user_id)
-                expiry_time = datetime.datetime.now() + remaining_time
+                remaining_time = await db.check_remaining_uasge(user_id)             
+                expiry_time = remaining_time + datetime.datetime.now()
 
                 buttons = [
                     [InlineKeyboardButton('⇚Back', callback_data='start')]
