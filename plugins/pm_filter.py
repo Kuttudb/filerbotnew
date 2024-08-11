@@ -2028,7 +2028,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer(MSG_ALRT)
 
     elif query.data == "clone":
-         if query.from_user.id in db.has_premium_access(user_id):
+         if await db.has_premium_access(user_id):
             buttons = [[
                 InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='start')
             ]]
