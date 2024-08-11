@@ -1104,12 +1104,13 @@ async def filter_qualities_cb_handler(client: Client, query: CallbackQuery):
         btn.insert(0, [
             
             InlineKeyboardButton("🎧 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}")
+            InlineKeyboardButton(f'🎚️ ǫᴜᴀʟɪᴛʏ', callback_data=f"qualities#{key}"),
+            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
         ])
         btn.insert(0, [
             InlineKeyboardButton(f"🗂 𝖥𝗂𝗅𝖾𝗌 : {total_results}", 'total'),
            InlineKeyboardButton("🔮 sᴇɴᴅ ᴀʟʟ", callback_data=f"sendfiles#{key}")
-            InlineKeyboardButton("🗓️ ʏᴇᴀʀs", callback_data=f"years#{key}")
+            
         ])
 
     if offset != "":
