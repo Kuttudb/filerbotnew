@@ -2209,8 +2209,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         try:
             if await db.has_premium_access(user_id):
                 
-                remaining_time = await db.check_remaining_usage(user_id)  # This is a timedelta object
-                expiry_time = datetime.datetime.now() + remaining_time  # Adding timedelta to current time
+                
                 buttons = [
                     [InlineKeyboardButton('⇚Back', callback_data='start')]
                 ]
@@ -2226,9 +2225,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 # Then edit the text
                 await query.message.edit_text(
                     text=f"👑 ʏᴏᴜ ᴀʀᴇ ᴀ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪʙᴇʀ 👑\n\n"
-                         f"**ʏᴏᴜʀ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs :\n\n"
-                         f"⏱️ ʀᴇᴍᴀɪɴɪɴɢ ᴛɪᴍᴇ : {str(remaining_time)}\n\n"
-                         f"📆 ᴇxᴘɪʀᴇs ᴏɴ : {expiry_time.strftime('%Y-%m-%d %H:%M:%S')}**",
+                         f"**ᴛᴏ ᴋɴᴏᴡ ʏᴏᴜʀ ᴘʟᴀɴ ᴠᴀʟɪᴅɪᴛʏ : /myplan\n\n",
                     reply_markup=reply_markup,
                     parse_mode=enums.ParseMode.HTML
                 )
