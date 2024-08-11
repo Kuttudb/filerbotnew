@@ -2212,7 +2212,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
        
-       elif query.data == "pmsubscription":
+    elif query.data == "pmsubscription":
         buttons = [[
             InlineKeyboardButton('⇚Back', callback_data='start')
         ]]
