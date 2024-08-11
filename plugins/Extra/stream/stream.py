@@ -11,6 +11,10 @@ import random
 async def stream_start(client, message):
     if STREAM_MODE == False:
         return 
+        user_id = query.from_user.id
+        # Check if the user has premium access
+    if not await db.has_premium_access(user_id):
+        return
     msg = await client.ask(message.chat.id, "**Now send me your file/video to get stream and download link**")
     if not msg.media:
         return await message.reply("**Please send me supported media.**")
